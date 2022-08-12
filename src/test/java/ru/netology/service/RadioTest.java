@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RadioTest {
     @Test
     public void shouldSetRadioStation() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentRadioStation(5);
-        int expexted = 5;
+        Radio rad = new Radio(14);
+        rad.setCurrentRadioStation(11);
+        int expexted = 11;
         int actual = rad.getCurrentRadioStation();
 
         Assertions.assertEquals(expexted, actual);
@@ -18,7 +18,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetRadioStationUnderLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
+        Radio rad = new Radio(20);
         rad.setCurrentRadioStation(-1);
         int expexted = 0;
         int actual = rad.getCurrentRadioStation();
@@ -28,8 +28,8 @@ public class RadioTest {
 
     @Test
     public void shouldSetRadioStationMoreLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentRadioStation(10);
+        Radio rad = new Radio(20);
+        rad.setCurrentRadioStation(21);
         int expexted = 0;
         int actual = rad.getCurrentRadioStation();
 
@@ -38,8 +38,8 @@ public class RadioTest {
 
     @Test
     public void sholdNextRadioStationMoreLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentRadioStation(9);
+        Radio rad = new Radio(20);
+        rad.setCurrentRadioStation(19);
 
         rad.nextRadioStation();
         int expected = 0;
@@ -49,7 +49,7 @@ public class RadioTest {
 
     @Test
     public void shouldNextRadioStation() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
+        Radio rad = new Radio(30);
         rad.setCurrentRadioStation(0);
 
         rad.nextRadioStation();
@@ -60,90 +60,90 @@ public class RadioTest {
 
     @Test
     public void shouldPreviousRadioStationUnderLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
+        Radio rad = new Radio(30);
         rad.setCurrentRadioStation(0);
 
         rad.previousRadioStation();
-        int expected = 9;
+        int expected = rad.getAmountRadioStations();
         int actual = rad.getCurrentRadioStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldPreviousRadioStation() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentRadioStation(9);
+        Radio rad = new Radio(20);
+        rad.setCurrentRadioStation(10);
 
         rad.previousRadioStation();
-        int expected = 8;
+        int expected = 9;
         int actual = rad.getCurrentRadioStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldNextVolumeMoreLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentVolume(10);
+        Volume vol = new Volume();
+        vol.setCurrentVolume(100);
 
-        rad.nextVolume();
-        int expected = 10;
-        int actual = rad.getCurrentVolume();
+        vol.nextVolume();
+        int expected = 100;
+        int actual = vol.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldNextVolume() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentVolume(0);
+        Volume vol = new Volume();
+        vol.setCurrentVolume(0);
 
-        rad.nextVolume();
+        vol.nextVolume();
         int expected = 1;
-        int actual = rad.getCurrentVolume();
+        int actual = vol.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldPreviousVolumeUnderLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentVolume(0);
+        Volume vol = new Volume();
+        vol.setCurrentVolume(0);
 
-        rad.previousVolume();
+        vol.previousVolume();
         int expected = 0;
-        int actual = rad.getCurrentVolume();
+        int actual = vol.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldPreviousVolume() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentVolume(10);
+        Volume vol = new Volume();
+        vol.setCurrentVolume(100);
 
-        rad.previousVolume();
-        int expected = 9;
-        int actual = rad.getCurrentVolume();
+        vol.previousVolume();
+        int expected = 99;
+        int actual = vol.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldSetVolumeUnderLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentVolume(-1);
+        Volume vol = new Volume();
+        vol.setCurrentVolume(-1);
         int expexted = 0;
-        int actual = rad.getCurrentVolume();
+        int actual = vol.getCurrentVolume();
 
         Assertions.assertEquals(expexted, actual);
     }
 
     @Test
     public void shouldSetVolumeMoreLimit() {
-        ru.netology.service.Radio rad = new ru.netology.service.Radio();
-        rad.setCurrentVolume(11);
+        Volume vol = new Volume();
+        vol.setCurrentVolume(101);
         int expexted = 0;
-        int actual = rad.getCurrentVolume();
+        int actual = vol.getCurrentVolume();
 
         Assertions.assertEquals(expexted, actual);
     }
