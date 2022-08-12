@@ -2,9 +2,19 @@ package ru.netology.service;
 
 public class Radio {
     private int currentRadioStation;
-    private int currentVolume;
+
+    private int amountRadioStations = 9;
+    public Radio(int amountRadioStations) {
+        this.amountRadioStations = amountRadioStations - 1;
+    }
+
+
+    public int getAmountRadioStations() {
+        return amountRadioStations ;
+    }
 
     public int getCurrentRadioStation() {
+
         return currentRadioStation;
     }
 
@@ -12,19 +22,22 @@ public class Radio {
         if (newCurrentRadioStation < 0) {
             return;
         }
-        if (newCurrentRadioStation > 9) {
-            return;
+        if (newCurrentRadioStation > amountRadioStations) {
+           return;
         }
         currentRadioStation = newCurrentRadioStation;
     }
 
     public void nextRadioStation() {
-        int target = currentRadioStation + 1;
 
-        if (target > 9) {
-            target = 0;
+        if (amountRadioStations > currentRadioStation) {
+            currentRadioStation++;
+        } else {
+            currentRadioStation = 0;
         }
-        setCurrentRadioStation(target);
+
+
+        setCurrentRadioStation(currentRadioStation);
 
     }
 
@@ -32,41 +45,19 @@ public class Radio {
         int target = currentRadioStation - 1;
 
         if (target < 0) {
-            target = 9;
+            target = amountRadioStations;
         }
         setCurrentRadioStation(target);
 
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
-            return;
-        }
-        if (newCurrentVolume > 10) {
-            return;
-        }
-        currentVolume = newCurrentVolume;
-    }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
 
-    public void nextVolume() {
-        int target = currentVolume + 1;
-        if (target > 10) {
-            target = 10;
-        }
-        setCurrentVolume(target);
-    }
 
-    public void previousVolume() {
-        int target = currentVolume - 1;
-        if (target < 0) {
-            target = 0;
-        }
-        setCurrentVolume(target);
-    }
+
+
+
+
 
 
 }
