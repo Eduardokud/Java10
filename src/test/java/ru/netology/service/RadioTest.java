@@ -82,68 +82,68 @@ public class RadioTest {
 
     @Test
     public void shouldNextVolumeMoreLimit() {
-        Volume vol = new Volume();
-        vol.setCurrentVolume(100);
+        Radio rad = new Radio(20);
+        rad.setCurrentVolume(100);
 
-        vol.nextVolume();
+        rad.nextVolume();
         int expected = 100;
-        int actual = vol.getCurrentVolume();
+        int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldNextVolume() {
-        Volume vol = new Volume();
-        vol.setCurrentVolume(0);
+        Radio rad = new Radio(20);
+        rad.setCurrentVolume(0);
 
-        vol.nextVolume();
+        rad.nextVolume();
         int expected = 1;
-        int actual = vol.getCurrentVolume();
+        int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldPreviousVolumeUnderLimit() {
-        Volume vol = new Volume();
-        vol.setCurrentVolume(0);
+        Radio rad = new Radio(20);
+        rad.setCurrentVolume(0);
 
-        vol.previousVolume();
+        rad.previousVolume();
         int expected = 0;
-        int actual = vol.getCurrentVolume();
+        int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldPreviousVolume() {
-        Volume vol = new Volume();
-        vol.setCurrentVolume(100);
+        Radio rad = new Radio(20);
+        rad.setCurrentVolume(100);
 
-        vol.previousVolume();
+        rad.previousVolume();
         int expected = 99;
-        int actual = vol.getCurrentVolume();
+        int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     public void shouldSetVolumeUnderLimit() {
-        Volume vol = new Volume();
-        vol.setCurrentVolume(-1);
+        Radio rad = new Radio(20);
+        rad.setCurrentVolume(-1);
         int expexted = 0;
-        int actual = vol.getCurrentVolume();
+        int actual = rad.getCurrentVolume();
 
         Assertions.assertEquals(expexted, actual);
     }
 
     @Test
     public void shouldSetVolumeMoreLimit() {
-        Volume vol = new Volume();
-        vol.setCurrentVolume(101);
+        Radio rad = new Radio(20);
+        rad.setCurrentVolume(101);
         int expexted = 0;
-        int actual = vol.getCurrentVolume();
+        int actual = rad.getCurrentVolume();
 
         Assertions.assertEquals(expexted, actual);
     }
