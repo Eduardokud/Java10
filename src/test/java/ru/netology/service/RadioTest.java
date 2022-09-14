@@ -29,7 +29,7 @@ public class RadioTest {
     @Test
     public void shouldSetRadioStationMoreLimit() {
         Radio rad = new Radio(20);
-        rad.setCurrentRadioStation(21);
+        rad.setCurrentRadioStation(20);
         int expexted = 0;
         int actual = rad.getCurrentRadioStation();
 
@@ -49,7 +49,7 @@ public class RadioTest {
 
     @Test
     public void shouldNextRadioStation() {
-        Radio rad = new Radio(30);
+        Radio rad = new Radio();
         rad.setCurrentRadioStation(0);
 
         rad.nextRadioStation();
@@ -64,7 +64,7 @@ public class RadioTest {
         rad.setCurrentRadioStation(0);
 
         rad.previousRadioStation();
-        int expected = rad.getAmountRadioStations();
+        int expected = 29;
         int actual = rad.getCurrentRadioStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -72,10 +72,10 @@ public class RadioTest {
     @Test
     public void shouldPreviousRadioStation() {
         Radio rad = new Radio(20);
-        rad.setCurrentRadioStation(10);
+        rad.setCurrentRadioStation(9);
 
         rad.previousRadioStation();
-        int expected = 9;
+        int expected = 8;
         int actual = rad.getCurrentRadioStation();
         Assertions.assertEquals(expected, actual);
     }
